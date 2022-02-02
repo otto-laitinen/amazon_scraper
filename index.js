@@ -4,9 +4,6 @@ const request = require('request-promise');         // for API requests
 const app = express();                              // initialize application
 const PORT = process.env.PORT  ||  5000;            // use dynamic port or port 5000
 
-// const apiKey = 'b13c5834dd03b7af4cbdae4e490b643e';  // API key
-// const generateScraperUrl(apiKey) = `http://api.scraperapi.com?api_key=${apiKey}&autoparse=true`
-
 const generateScraperUrl = (apiKey) => `http://api.scraperapi.com?api_key=${apiKey}&autoparse=true`;
 
 app.use(express.json());                            // parse JSON input
