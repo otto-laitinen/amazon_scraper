@@ -13,14 +13,28 @@ app.get('/', (req, res) => {                        // specify what to 'send bac
     res.send('Welcome to Amazon Scraper API!');
 });
 
-// GET Product Details
+// GET Product DETAILS
 app.get('/products/:productId', async (req, res) => {
     const { productId } = req.params;
 
     try {
         const response = await request(`${baseUrl}&url=https://www.amazon.com/dp/${productId}`);
 
-        res.json(response);
+        res.json(JSON.parse(response));
+    } catch (error) {
+        res.json(error);
+    }
+})
+
+
+// GET Product REVIEWS
+app.get('/products/:productId/reviews', async (req, res) => {
+    const { productId } = req.params;
+
+    try {
+        const response = await request(`${baseUrl}&url=https://www.amazon.com/product-reviews/${productId}`);
+
+        res.json(JSON.parse(response));
     } catch (error) {
         res.json(error);
     }
